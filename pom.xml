@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.streamreasoning</groupId>
@@ -19,28 +20,32 @@
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
-
     </repositories>
+
     <dependencies>
+
+        <!-- Polyflow dependencies -->
         <dependency>
             <groupId>com.github.riccardotommasini.polyflow</groupId>
             <artifactId>api</artifactId>
-            <version>v1.0.7</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.riccardotommasini.polyflow</groupId>
-            <artifactId>base</artifactId>
-            <version>v1.0.7</version>
+            <version>v1.0.9</version>
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.riccardotommasini.polyflow</groupId>
+            <artifactId>base</artifactId>
+            <version>v1.0.9</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Jena -->
         <dependency>
             <groupId>org.apache.jena</groupId>
             <artifactId>jena-arq</artifactId>
             <version>5.0.0</version>
-            <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>org.apache.jena</groupId>
             <artifactId>apache-jena-libs</artifactId>
@@ -48,22 +53,27 @@
             <type>pom</type>
         </dependency>
 
+        <!-- ANTLR -->
         <dependency>
             <groupId>org.antlr</groupId>
             <artifactId>antlr4</artifactId>
             <version>4.13.1</version>
         </dependency>
+
         <dependency>
             <groupId>org.antlr</groupId>
             <artifactId>antlr4-runtime</artifactId>
             <version>4.13.1</version>
         </dependency>
 
+        <!-- Tablesaw -->
         <dependency>
             <groupId>tech.tablesaw</groupId>
             <artifactId>tablesaw-core</artifactId>
             <version>0.43.1</version>
         </dependency>
+
+        <!-- Utilities -->
         <dependency>
             <groupId>org.javatuples</groupId>
             <artifactId>javatuples</artifactId>
@@ -75,12 +85,14 @@
             <artifactId>json</artifactId>
             <version>20230227</version>
         </dependency>
+
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <version>2.9.0</version>
         </dependency>
 
+        <!-- Neo4j -->
         <dependency>
             <groupId>org.neo4j</groupId>
             <artifactId>neo4j</artifactId>
@@ -92,6 +104,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>org.neo4j.community</groupId>
             <artifactId>it-test-support</artifactId>
@@ -104,5 +117,31 @@
             </exclusions>
         </dependency>
 
+        
+        <!-- JUnit 5 Test Engine -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
+
+    <build>
+        <plugins>
+
+            <!-- Ensure Surefire supports JUnit 5 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <useModulePath>false</useModulePath>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
 </project>
